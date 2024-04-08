@@ -1,0 +1,12 @@
+const Router = require('express')
+const router = new Router()
+const testController = require('../controllers/testController')
+const checkRole = require('../middleware/checkRoleMiddleware')
+const authMiddleware = require('../middleware/authMiddleware')
+router.post('/',authMiddleware,checkRole("TEACHER"),testController.create)
+router.post('/delete',authMiddleware,checkRole("TEACHER"),testController.delete)
+router.get('/:courseId',testController.getAll)
+router.get('/:courseId/:id',testController.getQuestionsTest)
+router.get('/creator/:courseId/:id',testController.getCreatorTest)
+router.get('/info/:courseId/:id',testController.getInfoTest)
+module.exports = router

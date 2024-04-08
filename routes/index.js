@@ -1,0 +1,13 @@
+const Router = require('express')
+const router = new Router()
+const userRouter = require('./userRouter')
+const testRouter = require('./testRouter')
+const resultRouter = require('./resultRouter')
+const courseRouter = require('./courseRouter')
+const questionRouter = require('./questionRouter')
+router.use('/user', userRouter)
+router.use('/result', resultRouter)
+router.use('/test', testRouter)
+router.use('/course', courseRouter)
+router.use('/question', questionRouter)
+module.exports = router
